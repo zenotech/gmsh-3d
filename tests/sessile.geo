@@ -39,5 +39,5 @@ Plane Surface(34) = {33};
 Extrude {0, 0, 1.5*wallLength} {
   Surface{34};
 }
-Physical Surface('wallNoSlip') = {56, 55, 51, 47, 34, 43};
+Physical Surface('wallNoSlip') = {56, 55, 51, 47, -34, 43};
 Physical Surface('bubble1') = {19, 28, 7, 10, 25, 22, 13, 16};

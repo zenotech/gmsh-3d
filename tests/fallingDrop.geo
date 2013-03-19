@@ -1,44 +1,76 @@
 
-droplet = 0.05;
-wall = 0.9;
-wallLength = 4;
-wallHeight=2.5*wallLength;
-r = 0.5;
-xc = 0.0;
-yc = 0.0;
-zc = 7*r;
-pertz = (0.0/100.0)*r;
-pertxy = r - Sqrt( (r*r*r)/(r+pertz) );
+nb = 1;
+b1 = 0.06;
+wall = 0.4;
 
-Point(1) = {xc, yc, zc, droplet}; // center
-Point(2) = {xc+r-pertxy, yc, zc, droplet}; // right
-Point(3) = {xc-r+pertxy, yc, zc, droplet}; // left
-Point(4) = {xc, yc, zc+r+pertz, droplet}; // up
-Point(5) = {xc, yc, zc-r-pertz, droplet}; // down
-Ellipse(1) = {4, 1, 1, 2};
-Ellipse(2) = {2, 1, 1, 5};
-Ellipse(3) = {3, 1, 1, 5};
-Ellipse(4) = {4, 1, 1, 3};
+D = 1.0;
+r = 0.5*D;
+slug = 0.7*r;
+pert = (0.0/100.0)*r;
 
-Extrude {{0, 0, 1}, {xc, yc, zc}, Pi/2} {
-  Line{1, 2, 3, 4};
-}
-Extrude {{0, 0, 1}, {xc, yc, zc}, Pi/2} {
-  Line{5, 14, 11, 8};
+For t In {0:nb-1}
+ // bubble's coordinates
+ xc = 0.0;
+ yc = 0.0;
+ zc = 1.0*D+(slug+r+r+r/2.0)*t;
+
+ // include torus.geo file
+ Include '../bubbleShape/sphere.geo';
+EndFor
+
+sideFactorX = 1.0;
+sideFactorY = 1.0;
+
+wallLength = 11*D;
+
+
+/* 
+ *              20         19
+ *              o -------- o    Y           
+ *              |          |    ^
+ *              |          |    |
+ *              |          |    |
+ *              o -------- o     ------> X
+ *              17         18
+ *
+ * */
+
+k=10000;
+Point(k+1) = {-4.0*D*sideFactorX, 
+              -4.0*D*sideFactorY, 
+              -8.0*D,
+              wall}; // p1
+Point(k+2) = {-4.0*D*sideFactorX,  
+               4.0*D*sideFactorY, 
+              -8.0*D,
+              wall}; // p2
+Point(k+3) = { 4.0*D*sideFactorX,  
+               4.0*D*sideFactorY, 
+              -8.0*D,
+              wall}; // p3
+Point(k+4) = { 4.0*D*sideFactorX, 
+              -4.0*D*sideFactorY, 
+              -8.0*D,
+              wall}; // p4
+
+Line(k+1) = {k+1, k+4};
+Line(k+2) = {k+4, k+3};
+Line(k+3) = {k+3, k+2};
+Line(k+4) = {k+2, k+1};
+
+Line Loop(k+05) = {k+04, k+01, k+02, k+03};
+Plane Surface(k+06) = {k+05};
+Extrude {0, 0, wallLength} {
+  Line{k+04, k+03, k+02, k+01};
 }
 
-Point(11) = { -wallLength, -wallLength, -wallLength, wall};
-Point(12) = { wallLength, -wallLength, -wallLength, wall};
-Point(13) = { -wallLength, wallLength, -wallLength, wall};
-Point(14) = { wallLength, wallLength, -wallLength, wall};
-Line(29) = {11, 12};
-Line(30) = {12, 14};
-Line(31) = {14, 13};
-Line(32) = {13, 11};
-Line Loop(33) = {30, 31, 32, 29};
-Plane Surface(34) = {33};
-Extrude {0, 0, wallHeight} {
-  Surface{34};
-}
-Physical Surface('wallNoSlip') = {34, 51, 47, 56, 43, 55};
-Physical Surface('bubble1') = {13, 25, 28, 19, 7, 16, 22, 10};
+Line Loop(k+23) = {k+11, k+07, k+19, k+15};
+Plane Surface(k+24) = {k+23};
+Physical Surface('wallNoSlip') = {k+24, -(k+06), k+10, k+22, k+18, k+14};
+
+j=200*0;
+For t In {1:nb}
+ Physical Surface(Sprintf("bubble%g",t)) = {j+10, j+40, j+49, j+25, j+13, j+37, j+52, j+22, j+16, j+34, j+43, j+46, j+31, j+19, j+7, j+28};
+ j=200*t;
+EndFor
+

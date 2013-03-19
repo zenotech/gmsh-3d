@@ -1,6 +1,6 @@
 // define droplet edge length
-b1 = 0.05;
+droplet = 0.04;
 
 // include sphere.geo file
-Include 'square.geo';
+Include 'sphere.geo';
 

@@ -1,6 +1,6 @@
 
 
-Merge "../bubbles/zalesak.brep";
+Merge "../bubbleShape/zalesak.brep";
 
 b1 = 0.1;
 wall = 0.5;
