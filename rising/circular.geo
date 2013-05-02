@@ -5,8 +5,8 @@ b1 = 0.06;
 wall = 0.2;
 
 D = 1.0;
-r = 0.42*D;
-body = 1.5*D;
+r = 0.35*D;
+body = 3.5*D;
 slug = 0.7*r;
 
 For t In {0:nb-1}
@@ -62,7 +62,7 @@ Line Loop(k+54) = {k+38, k+50, k+46, k+42};
 Plane Surface(k+55) = {k+54};
 Plane Surface(k+56) = {k+05};
 
-Physical Surface('wallInflowZeroU') = {k+56, k+55,k+53, k+45, k+49, k+41, k+29, k+37, k+17, k+09, k+21, k+13, k+25, k+33};
+Physical Surface('wallInflowZeroU') = {-(k+56), k+55,k+53, k+45, k+49, k+41, k+29, k+37, k+17, k+09, k+21, k+13, k+25, k+33};
 
 j=200*0;
 For t In {1:nb}
