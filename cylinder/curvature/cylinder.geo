@@ -41,10 +41,10 @@ For t In {1:nb}
  j=200*t;
 EndFor
 
-Transfinite Surface {22};
-Transfinite Surface {24};
-Transfinite Surface {20};
-Transfinite Surface {16};
-Transfinite Surface {12};
-Transfinite Surface {8};
+//Transfinite Surface {22};
+//Transfinite Surface {24};
+//Transfinite Surface {20};
+//Transfinite Surface {16};
+//Transfinite Surface {12};
+//Transfinite Surface {8};
 
