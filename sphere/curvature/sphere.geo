@@ -9,8 +9,13 @@ pert = (0.0/100.0)*r;
 wallLength = 6.0;
 
 For t In {0:nb-1}
+ // bubble's coordinates
+ xc = 0.0;
+ yc = 0.0;
+ zc = 0.0+(slug+r+r+r/2.0)*t;
+
  // include torus.geo file
- Include '../../bubbles/sphere.geo';
+ Include '../../bubbleShape/sphere.geo';
 EndFor
 
 k=10000;
