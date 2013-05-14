@@ -37,7 +37,7 @@ Physical Surface('wallNoSlip') = {k+28, k+27, k+15, -(k+6), k+19, k+23};
 
 j=200*0;
 For t In {1:nb}
- Physical Surface('bubble1') = {-(j+24), -(j+22), -(j+8), j+20, j+16, -(j+12)};
+ Physical Surface('bubble1') = {-(j+24), j+22, -(j+8), j+20, j+16, -(j+12)};
  j=200*t;
 EndFor
 

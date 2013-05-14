@@ -1,7 +1,7 @@
 
 
 // define b1 edge length
-b1 = 0.075;
+b1 = 0.079;
 
 // include cylinder.geo file
 Include 'cylinder.geo';
