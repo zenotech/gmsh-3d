@@ -9,7 +9,7 @@ pert = (0.0/100.0)*r;
 
 For t In {0:nb-1}
  // bubble's coordinates
- xc = 0.0+3*r;
+ xc = 0.0;
  yc = 0.0;
  zc = 0.0;
 
@@ -23,3 +23,7 @@ For t In {1:nb}
  j=200*t;
 EndFor
 
+//Transfinite Line {15, 47, 31} = 10/(b1/0.20) Using Progression 1;
+//Transfinite Line {6, 22, 38, 27, 11, 43} = 16/(b1/0.20) Using Progression 1;
+//Transfinite Line {23, 7, 39} = 20/(b1/0.20) Using Progression 1;
+//Transfinite Line {5, 9, 13, 17, 4, 1, 3, 2, 29, 25, 21, 33} = 4/(b1/0.20) Using Progression 1;
