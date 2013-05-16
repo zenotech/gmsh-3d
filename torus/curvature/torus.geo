@@ -9,7 +9,7 @@ pert = (0.0/100.0)*r;
 
 For t In {0:nb-1}
  // bubble's coordinates
- xc = 0.0;
+ xc = 0.0+3*r;
  yc = 0.0;
  zc = 0.0;
 
