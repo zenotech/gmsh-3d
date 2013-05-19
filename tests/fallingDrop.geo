@@ -1,7 +1,7 @@
 
 nb = 1;
-b1 = 0.06;
-wall = 0.4;
+b1 = 0.08;
+wall = 0.6;
 
 D = 1.0;
 r = 0.5*D;
@@ -12,7 +12,7 @@ For t In {0:nb-1}
  // bubble's coordinates
  xc = 0.0;
  yc = 0.0;
- zc = 1.0*D+(slug+r+r+r/2.0)*t;
+ zc = 5.5;
 
  // include torus.geo file
  Include '../bubbleShape/sphere.geo';
@@ -21,7 +21,7 @@ EndFor
 sideFactorX = 1.0;
 sideFactorY = 1.0;
 
-wallLength = 11*D;
+wallLength = 8*D;
 
 
 /* 
@@ -38,19 +38,19 @@ wallLength = 11*D;
 k=10000;
 Point(k+1) = {-4.0*D*sideFactorX, 
               -4.0*D*sideFactorY, 
-              -8.0*D,
+               0.0*D,
               wall}; // p1
 Point(k+2) = {-4.0*D*sideFactorX,  
                4.0*D*sideFactorY, 
-              -8.0*D,
+               0.0*D,
               wall}; // p2
 Point(k+3) = { 4.0*D*sideFactorX,  
                4.0*D*sideFactorY, 
-              -8.0*D,
+               0.0*D,
               wall}; // p3
 Point(k+4) = { 4.0*D*sideFactorX, 
               -4.0*D*sideFactorY, 
-              -8.0*D,
+               0.0*D,
               wall}; // p4
 
 Line(k+1) = {k+1, k+4};
