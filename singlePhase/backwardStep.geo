@@ -38,5 +38,5 @@ Extrude {0, 0, 0.4*L} {
 }
 Physical Surface('wallInflowU') = {23};
 Physical Surface('wallOutflow') = {39};
-Physical Surface('wallNoSlip') = {27, 31, 35, 19, 40, -8};
+Physical Surface('wallNoSlip') = {27, 31, 35, 19};
 Physical Surface('wallNormalW') = {40, -8};

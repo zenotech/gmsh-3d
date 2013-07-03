@@ -1,6 +1,6 @@
 
 wall = 0.09;
-droplet = 0.01;
+droplet = 0.03;
 
 wallLength = 1.0;
 xc = 0.35;
