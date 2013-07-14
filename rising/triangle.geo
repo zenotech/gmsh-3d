@@ -5,7 +5,7 @@ b1 = 0.06;
 wall = 0.2;
 
 D = 1.0;
-r = 0.3*D;
+r = 0.25*D;
 body = 2*D;
 slug = 1.0*r;
 
@@ -21,7 +21,7 @@ EndFor
 wallLength1 = 3.0*D;
 wallLength2 = nb*(body+3*r/2.0)+(nb-1)*slug;
 wallLength3 = 2.0*D;
-side=D*Sqrt(3);
+side=Sqrt(Pi*(D/2.0)*(D/2.0)*4.0/Sqrt(3)); // area = circular area
 height=side*Sqrt(3)/2.0;
 
 /* 
