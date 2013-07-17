@@ -1,7 +1,7 @@
 
 
 nb = 1;
-b1 = 0.08;
+b1 = 0.07;
 wall = 0.3;
 
 D = 1.0;
@@ -16,7 +16,7 @@ For t In {0:nb-1}
  zc = 0.0;
 
  // include torus.geo file
- Include '../bubbleShape/taylor.geo';
+ Include '../../bubbleShape/taylor.geo';
 EndFor
 
 wallLength1 = 2*D;
@@ -62,11 +62,11 @@ Line Loop(k+54) = {k+38, k+50, k+46, k+42};
 Plane Surface(k+55) = {k+54};
 Plane Surface(k+56) = {k+05};
 
-Physical Surface('wallOutflow') = {k+55};
-Physical Surface('wallInflowUParabolic') = {-(k+56)};
-Physical Surface('wallNoSlip') = {k+09, k+13, k+17, k+21, 
-                                  k+53, k+41, k+45, k+49, 
-                                  k+33, k+25, k+29, k+37};
+Physical Surface('wallInflowUParabolic') = {k+55, -(k+56)};
+
+Physical Surface('wallNoSlipPressure') = {k+09, k+13, k+17, k+21, 
+                                          k+53, k+41, k+45, k+49, 
+                                          k+33, k+25, k+29, k+37};
 
 j=200*0;
 For t In {1:nb}
