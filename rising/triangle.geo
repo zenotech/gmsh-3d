@@ -5,8 +5,8 @@ b1 = 0.06;
 wall = 0.2;
 
 D = 1.0;
-r = 0.25*D;
-body = 2*D;
+r = 0.35*D;
+body = 2.0*D;
 slug = 1.0*r;
 
 For t In {0:nb-1}
@@ -21,7 +21,11 @@ EndFor
 wallLength1 = 3.0*D;
 wallLength2 = nb*(body+3*r/2.0)+(nb-1)*slug;
 wallLength3 = 2.0*D;
-side=Sqrt(Pi*(D/2.0)*(D/2.0)*4.0/Sqrt(3)); // area = circular area
+
+// side defined as equivalent diamenter D_eq of a circular channel with
+// D = 1
+// D_eq = 4*area/perimeter
+side=3*D/Sqrt(3.0); 
 height=side*Sqrt(3)/2.0;
 
 /* 
@@ -66,19 +70,31 @@ Extrude {wallLength3, 0, 0} {
 Extrude {-wallLength1, 0, 0} {
   Line{k+01, k+02, k+03, k+04, k+05, k+06, k+07, k+08, k+09};
 }
-Line Loop(k+118) = {k+86, k+90, k+94, k+98, k+102, k+106, k+110, k+114, k+82};
+Line Loop(k+118) = {k+86, k+90, k+94, k+98, 
+                    k+102, k+106, k+110, k+114, k+82};
 Plane Surface(k+119) = {k+118};
-Line Loop(k+120) = {k+46, k+78, k+74, k+70, k+66, k+62, k+58, k+54, k+50};
+Line Loop(k+120) = {k+46, k+78, k+74, k+70, 
+                    k+66, k+62, k+58, k+54, k+50};
 Plane Surface(k+121) = {k+120};
 
-Physical Surface('wallInflowZeroU') = {k+117, k+113, k+109, k+105,k+101, k+97, k+93, k+89, k+85, -(k+45), -(k+41), -(k+37), -(k+33), -(k+29),-(k+25),-(k+21),-(k+17),-(k+13), -(k+73), -(k+77), -(k+81),-(k+49),-(k+53), -(k+57), -(k+61), -(k+65), -(k+69), -(k+121), k+119};
+Physical Surface('wallInflowZeroU') = {k+117, k+113, k+109, k+105,
+                                       k+101, k+97, k+93, k+89, 
+                                       k+85, -(k+45), -(k+41), -(k+37), 
+                                       -(k+33), -(k+29),-(k+25),-(k+21),
+                                       -(k+17),-(k+13), -(k+73), -(k+77), 
+                                       -(k+81),-(k+49),-(k+53), -(k+57), 
+                                       -(k+61), -(k+65), -(k+69), -(k+121), 
+                                       k+119};
 
 j=200*0;
 For t In {1:nb}
  Physical Surface(Sprintf("bubble%g",t)) = {j+40, -(j+10), -(j+30), j+20,
- j+36, j+16, -(j+33), -(j+13), -(j+26), j+43, j+23, -(j+46)};
+                                            j+36, j+16, -(j+33), -(j+13), 
+                                            -(j+26), j+43, j+23, -(j+46)};
  j=200*t;
 EndFor
 
-Transfinite Line {k+40, k+36, k+28, k+24, k+16, k+12} = 40 Using Progression 1;
-Transfinite Line {k+02, k+08, k+05, k+38, k+14, k+26} = 10 Using Progression 1;
+Transfinite Line {k+40, k+36, k+28, k+24, 
+                  k+16, k+12} = 40 Using Progression 1;
+Transfinite Line {k+02, k+08, k+05, k+38, 
+                  k+14, k+26} = 10 Using Progression 1;

@@ -1,12 +1,12 @@
 
 
 nb = 1;
-b1 = 0.03;
+b1 = 0.06;
 wall = 0.2;
 
 D = 1.0;
-r = 0.20*D;
-body = 1.2*D;
+r = 0.35*D;
+body = 2.0*D;
 slug = 1.0*r;
 
 For t In {0:nb-1}
@@ -21,9 +21,12 @@ EndFor
 wallLength1 = 3.0*D;
 wallLength2 = nb*(body+3*r/2.0)+(nb-1)*slug;
 wallLength3 = 2.0*D;
-side=2*Pi*(D/2.0)/3.0; // side: wet perimeter of circular channel
+
+// side defined as equivalent diamenter D_eq of a circular channel with
+// D = 1
+// D_eq = 4*area/perimeter
+side=3*D/Sqrt(3.0); 
 height=side*Sqrt(3)/2.0;
-Printf('side: %f  height: %f',side,height);
 
 /* 
  *                   19
