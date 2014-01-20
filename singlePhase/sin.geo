@@ -58,9 +58,9 @@ Line Loop(s2) = {(nPoints+2)+4*(nPoints-2)+k:
 Plane Surface(s2+1) = {s2};
 
 
-Physical Surface('wall') = {-((nPoints-1)+4+k):
+Physical Surface('wallNoSlip') = {-((nPoints-1)+4+k):
                             -((nPoints-1)+4+((nPoints-1)*nTheta-1)*4+k):
                             -4};
-Physical Surface('inflow') = {-1*(s1+1)};
-Physical Surface('outflow') = {s2+1};
+Physical Surface('wallInflow') = {-1*(s1+1)};
+Physical Surface('wallOutflow') = {s2+1};
 
