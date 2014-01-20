@@ -1,7 +1,7 @@
 
 
-nb = 1;
-b1 = 0.06;
+nb = 2;
+b1 = 0.05;
 wall = 0.2;
 
 D = 1.0;
@@ -77,7 +77,7 @@ Line Loop(k+120) = {k+46, k+78, k+74, k+70,
                     k+66, k+62, k+58, k+54, k+50};
 Plane Surface(k+121) = {k+120};
 
-Physical Surface('wallInflowU') = {k+119, -(k+121)};
+Physical Surface('wallInflowUParabolic') = {k+119, -(k+121)};
 Physical Surface('wallNoSlipPressure') = {k+117, k+113, k+109, k+105,
                                           k+101, k+97, k+93, k+89, 
                                           k+85, -(k+45), -(k+41), -(k+37), 
