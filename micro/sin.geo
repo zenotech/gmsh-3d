@@ -2,7 +2,7 @@
 
 nb = 1;
 b1 = 0.08;
-wall = 0.3;
+wall = 0.1;
 
 D = 1.0;
 r = 0.30*D;
@@ -77,11 +77,11 @@ Line Loop(s2) = {(nPoints+2)+4*(nPoints-2)+k:
 Plane Surface(s2+1) = {s2};
 
 
-Physical Surface('wall') = {-((nPoints-1)+4+k):
+Physical Surface('wallNoSlip') = {-((nPoints-1)+4+k):
                             -((nPoints-1)+4+((nPoints-1)*nTheta-1)*4+k):
                             -4};
-Physical Surface('inflow') = {-1*(s1+1)};
-Physical Surface('outflow') = {s2+1};
+Physical Surface('wallInflowUParabolic') = {-1*(s1+1)};
+Physical Surface('wallOutflow') = {s2+1};
 
 j=200*0;
 For t In {1:nb}
