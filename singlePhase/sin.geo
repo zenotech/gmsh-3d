@@ -4,10 +4,10 @@ wall = 0.1;
 
 A = 0.05;
 k = 1;
-stretch=2;
-phase = 1.5;
-omega = 2*Pi;
-nPoints = 10;
+stretch=4;
+phase = 0;
+nCycles = 1;
+nPoints = 18;
 nTheta = 4;
 
 k = 10000;
@@ -16,7 +16,7 @@ shift = 0;
 // top line
 For i In {1:nPoints}
  X = stretch*( (i-1)/(nPoints-1) );
- Y = +0.5 + A*Sin(omega*k*X-phase);
+ Y = 0.5 + A*Sin(nCycles*2*Pi/stretch*X-phase);
  Point(j) = {X, Y, 0, wall};
  j = j + 1;
 EndFor
