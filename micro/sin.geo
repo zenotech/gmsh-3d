@@ -23,10 +23,10 @@ EndFor
 // sin wall config
 A = 0.05;
 k = 1;
-stretch=6;
+stretch=4;
 phase = 0;
 nCycles = 3;
-nPoints = 50;
+nPoints = 20;
 nTheta = 4;
 
 k = 10000;
