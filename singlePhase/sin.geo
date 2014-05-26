@@ -29,7 +29,7 @@ For i In {1:nPoints-1}
 EndFor
 
 j = 1+k;
-// 1st nThetaation
+// 1st rotation
 For i In {1:nPoints-1}
 Extrude {{1, 0, 0}, {0, 0, 0}, 2*Pi/nTheta} {
   Line{j};
