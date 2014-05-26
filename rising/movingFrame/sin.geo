@@ -5,28 +5,28 @@ b1 = 0.08;
 wall = 0.1;
 
 D = 1.0;
-r = 0.30*D;
+r = 0.3*D;
 body = 1*D;
 slug = 0.7*r;
 
 For t In {0:nb-1}
  // bubble's coordinates
- xc = 0.5+(slug+body+r+r/2.0)*t;
+ xc = 4.0+(slug+body+r+r/2.0)*t;
  yc = 0.0;
  zc = 0.0;
 
  // include torus.geo file
- Include '../bubbleShape/taylor.geo';
+ Include '../../bubbleShape/taylor.geo';
 EndFor
 
 
 // sin wall config
-A = 0.1;
+A = 0.05;
 k = 1;
 stretch=10;
 phase = 0;
-nCycles = 10;
-nPoints = 50;
+nCycles = 4;
+nPoints = 40;
 nTheta = 4;
 
 k = 10000;
@@ -39,6 +39,11 @@ For i In {1:nPoints}
  Point(j) = {X, Y, 0, wall};
  j = j + 1;
 EndFor
+
+// avoid zero coordinate on the boundary
+Rotate {{1, 0, 0}, {0, 0, 0}, Pi/30.0} {
+  Point{k+1:k+nPoints};
+}
 
 j = 1+k;
 // lines
@@ -77,11 +82,10 @@ Line Loop(s2) = {(nPoints+2)+4*(nPoints-2)+k:
 Plane Surface(s2+1) = {s2};
 
 
-Physical Surface('wallNoSlip') = {-((nPoints-1)+4+k):
+Physical Surface('wallInflowZeroU') = {-1*(s1+1),s2+1};
+Physical Surface('wallMovingYZ') = {-((nPoints-1)+4+k):
                             -((nPoints-1)+4+((nPoints-1)*nTheta-1)*4+k):
                             -4};
-Physical Surface('wallInflowUParabolic') = {-1*(s1+1)};
-Physical Surface('wallOutflow') = {s2+1};
 
 j=200*0;
 For t In {1:nb}

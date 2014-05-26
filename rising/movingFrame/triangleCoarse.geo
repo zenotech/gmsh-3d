@@ -15,7 +15,7 @@ For t In {0:nb-1}
  yc = 0.0;
  zc = 0.0;
 
- Include '../bubbleShape/taylor.geo';
+ Include '../../bubbleShape/taylor.geo';
 EndFor
 
 wallLength1 = 3.0*D;

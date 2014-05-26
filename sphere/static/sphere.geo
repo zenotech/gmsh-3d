@@ -1,7 +1,7 @@
 // Gmsh project created on Mon Oct  5 20:56:07 2009
 
 nb = 1;
-wall = 0.9;
+wall = 0.2;
 
 D = 1.0;
 r = 0.5*D;
@@ -36,21 +36,21 @@ wallLength = 10*D;
  * */
 
 k=10000;
-Point(k+1) = {-4.0*D*sideFactorX, 
-              -4.0*D*sideFactorY, 
-              -4.0*D,
+Point(k+1) = {-2.0*D*sideFactorX, 
+              -2.0*D*sideFactorY, 
+              -2.0*D,
               wall}; // p1
-Point(k+2) = {-4.0*D*sideFactorX,  
-               4.0*D*sideFactorY, 
-              -4.0*D,
+Point(k+2) = {-2.0*D*sideFactorX,  
+               2.0*D*sideFactorY, 
+              -2.0*D,
               wall}; // p2
-Point(k+3) = { 4.0*D*sideFactorX,  
-               4.0*D*sideFactorY, 
-              -4.0*D,
+Point(k+3) = { 2.0*D*sideFactorX,  
+               2.0*D*sideFactorY, 
+              -2.0*D,
               wall}; // p3
-Point(k+4) = { 4.0*D*sideFactorX, 
-              -4.0*D*sideFactorY, 
-              -4.0*D,
+Point(k+4) = { 2.0*D*sideFactorX, 
+              -2.0*D*sideFactorY, 
+              -2.0*D,
               wall}; // p4
 
 Line(k+1) = {k+1, k+4};
@@ -60,7 +60,7 @@ Line(k+4) = {k+2, k+1};
 
 Line Loop(k+05) = {k+04, k+01, k+02, k+03};
 Plane Surface(k+06) = {k+05};
-Extrude {0, 0, 8*D} {
+Extrude {0, 0, 4*D} {
   Line{k+04, k+03, k+02, k+01};
 }
 
