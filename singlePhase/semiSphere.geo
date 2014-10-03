@@ -66,7 +66,7 @@ Line Loop(515) = {504, 510, 507, 513};
 Line Loop(516) = {204, 210, 207, 213};
 Plane Surface(517) = {515, 516};
 
-Physical Surface('wallOutflow') = {505, 511, 508, 514};
-Physical Surface('wallRotating') = {214, 208, 211, 205};
-Physical Surface('wallNormalW') = {517};
+Physical Surface('wallOutflow') = {505, 511, -508, -514};
+Physical Surface('wallRotating') = {214, 208, -211, -205};
+Physical Surface('wallNormalW') = {-517};
 
