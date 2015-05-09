@@ -99,9 +99,13 @@ Line Loop(46) = {1, 4, 3, 2};
 Plane Surface(47) = {-46};
 Plane Surface(48) = {-45, -46};
 
+// PERIODIC MESHING
+// For periodic surfaces, the line tangents of the two periodic planes
+// (slave and master) must have the same orientation.
 Periodic Surface 42 {12,11,10,9} = 47 {1,2,3,4};
 Periodic Surface 44 {16,15,14,13,12,11,10,9} = 48 {8,7,6,5,1,2,3,4};
 
+// For correct orientation, the normal vectors must be pointed outward.
 Physical Surface('wallNoSlip') = {26, 28, 30, 32};
 Physical Surface('wallLeft') = {48, 47};
 Physical Surface('wallRight') = {44, 42};

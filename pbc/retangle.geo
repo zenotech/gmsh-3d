@@ -30,8 +30,11 @@ Extrude {0, 0, L} {
 }
 
 // PERIODIC MESHING
+// For periodic surfaces, the line tangents of the two periodic planes
+// (slave and master) must have the same orientation.
 Periodic Surface 6 {2,3,4,1} = 28 {8,9,10,11};
 
+// For correct orientation, the normal vectors must be pointed outward.
 Physical Surface('wallInflowU') = {23};
 Physical Surface('wallOutflow') = {15};
 Physical Surface('wallNoSlip') = {19,27};
